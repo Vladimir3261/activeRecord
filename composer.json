@@ -1,0 +1,10 @@
+{
+  "name": "isv/activerecord",
+  "type": "library",
+  "description": "Active record package by ISVTeam",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4.0"
+  }
+}
