@@ -76,14 +76,15 @@ abstract class ModelBase implements ModelBaseInterface
      * ModelBase constructor. Find DB row using primary kwy just int and load
      * all row data from database to current model instance properties.
      * @param int $id
+     * @param $adapter PDO
      */
-    public function __construct($id=0)
+    public function __construct(PDO $adapter, $id=0)
     {
-        $this->Adapter = $this->getAdapter();
+        $this->Adapter = $adapter;
         $this->primaryName = $this->getPrimary();
         if($id)
         {
-            $data = is_int($id) ? $this->findByPk($id) : $this->findOne($id);
+            $data = is_numeric($id) ? $this->findByPk($id) : $this->findOne($id);
             if ($data)
             {
                 foreach ($data as $field => $value)
@@ -206,7 +207,6 @@ abstract class ModelBase implements ModelBaseInterface
         }
         return (int)$stmt->fetch(PDO::FETCH_COLUMN);
     }
-
 
     /**
      * Delete row from database using primary key
@@ -422,24 +422,6 @@ abstract class ModelBase implements ModelBaseInterface
         }
         return $array;
     }
-
-    /**
-     * Now this system work just with MySQL.
-     * @return PDO
-     * Return current adapter
-     * @since 2.0  PostgreSQL SqlLite MongoDB
-     *
-     */
-    public function getAdapter()
-    {
-        if($this->Adapter !== null)
-        {
-            return $this->Adapter;
-        }
-        $db = new DbAdapter();
-        return $db->Adapter();
-    }
-
     /**
      * Validate data before save
      * @return bool
