@@ -21,9 +21,10 @@ interface ModelInterface
      * using the primary key when object is created
      * ModelInterface constructor.
      * @param int $id
+     * @param  \PDO $adapter
      *
      */
-    public function __construct($id);
+    public function __construct(\PDO $adapter, $id);
 
     /**
      * @param array $fields
@@ -75,11 +76,4 @@ interface ModelInterface
      * @return array
      */
     public function execute();
-
-    /**
-     * @return mixed
-     * DATABASE ENGINE ADAPTER
-     * @return \PDO
-     */
-    public function getAdapter();
 }
