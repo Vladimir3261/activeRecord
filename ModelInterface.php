@@ -6,7 +6,7 @@
  * Time: 16:39
  */
 
-namespace isv\DB;
+namespace isv\activerecord;
 /**
  * Main interface for working with databases
  * Interface ModelInterface

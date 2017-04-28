@@ -1,5 +1,5 @@
 <?php
-namespace isv\DB;
+namespace isv\activerecord;
 use PDO;
 
 /**

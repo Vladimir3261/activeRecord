@@ -6,7 +6,7 @@
  * Time: 18:28
  */
 
-namespace isv\DB;
+namespace isv\activerecord;
 
 /**
  * Interface ModelBaseInterface
